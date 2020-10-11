@@ -62,6 +62,8 @@ function light() {
     $('input').removeClass('inputType').addClass('inputType_1');
     $('.calculator').removeClass('calculator').addClass('calCulator');
     document.body.style.backgroundColor = ' rgb(152, 146, 146)';
+    $('.header-color').removeClass('header-color').addClass('header-color_1');
+    $('.mode-color').removeClass('mode-color').addClass('mode-color_1');
 }
 function dark() {
     $('.btn').removeClass('btn').addClass('but');
@@ -70,6 +72,8 @@ function dark() {
     $('input').removeClass('inputType_1').addClass('inputType');
     $('.calCulator').removeClass('calCulator').addClass('calculator');
     document.body.style.backgroundColor = ' rgb(37, 37, 37)';
+    $('.header-color_1').removeClass('header-color_1').addClass('header-color');
+    $('.mode-color_1').removeClass('mode-color_1').addClass('mode-color');
 }
 
 // функция для смены размер калькулятора
