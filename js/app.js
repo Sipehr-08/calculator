@@ -1,13 +1,41 @@
+let sel = 0;
+
+function toggle() {
+    let imageToggle = document.getElementsByClassName('image-toggle')[0];
+    let textToggle = document.getElementById('text-toggle');
+    if(sel == 0) {
+        sel++;
+        imageToggle.src = 'moon.svg';
+        textToggle.style.color = "rgb(0,0,0)";
+        textToggle.innerHTML = 'Dark';
+        light();           
+    }
+    else {
+        sel = 0;
+        imageToggle.src = 'sun.svg';
+        textToggle.style.color = "white";
+        textToggle.innerHTML = 'Light';
+        dark();   
+    }
+}
+
+
 
 function insert(num) {
     var cal = document.form.textview.value;
-    if ((!cal.includes('.') || num !== '.') && cal.length <= 1 ) {
-        document.form.textview.value = (document.form.textview.value.replace(/0/gi,'') + num);
-      } else if((!cal.includes('.') || num !== '.') && cal.length > 1 && cal.length <10) {
+    if (cal.length <= 1 ) {
+        document.form.textview.value = (document.form.textview.value.replace(/0/,'') + num);
+      } else if(cal.length > 1 && cal.length <12) {
         document.form.textview.value = document.form.textview.value + num;
       }
-    
-    
+}
+
+function dot() {
+    var cal = document.form.textview.value;
+
+    if(!cal.includes('.') || num !== '.') {
+        document.form.textview.value = document.form.textview.value + '.';
+    }
 }
 
 function plusMinus() {
@@ -21,8 +49,8 @@ if(cal.substr(0,1) !== '-') {
 
 function insertSymbol(symbol) {
     var cal = document.form.textview.value;
-    if(cal.slice(-1) == symbol) {
-        document.form.textview.value = document.form.textview.value + '';
+    if(cal.slice(-1) === '+' || cal.slice(-1) === '-' || cal.slice(-1) === '/' ||cal.slice(-1) === '*') {
+        document.form.textview.value = (document.form.textview.value + '');
     }else{
         document.form.textview.value = document.form.textview.value + symbol;
     }  
@@ -76,34 +104,34 @@ function dark() {
     $('.mode-color_1').removeClass('mode-color_1').addClass('mode-color');
 }
 
-// функция для смены размер калькулятора
-const cal = document.getElementById('calculator');
+// // функция для смены размер калькулятора
+// const cal = document.getElementById('calculator');
 
-function small() {
-    document.form.textview.style.width = '275px';
-    document.form.textview.style.height = '60px';
-    document.form.textview.style.fontSize = '30px';
-    cal.style.maxWidth = '280px';
-    cal.style.marginTop = '15%';
-    cal.style.padding = '10px';
-    cal.style.gridGap = '5px';
-}
-function middle() {
-    document.form.textview.style.width = '360px';
-    document.form.textview.style.height = '100px';
-    document.form.textview.style.fontSize = '60px';
-    cal.style.maxWidth = '360px';
-    cal.style.marginTop = '10%';
-    cal.style.padding = '30px';
-    cal.style.gridGap = '10px';
-}
+// function small() {
+//     document.form.textview.style.width = '275px';
+//     document.form.textview.style.height = '60px';
+//     document.form.textview.style.fontSize = '30px';
+//     cal.style.maxWidth = '280px';
+//     cal.style.marginTop = '15%';
+//     cal.style.padding = '10px';
+//     cal.style.gridGap = '5px';
+// }
+// function middle() {
+//     document.form.textview.style.width = '360px';
+//     document.form.textview.style.height = '100px';
+//     document.form.textview.style.fontSize = '60px';
+//     cal.style.maxWidth = '360px';
+//     cal.style.marginTop = '10%';
+//     cal.style.padding = '30px';
+//     cal.style.gridGap = '10px';
+// }
 
-function big() {
-    document.form.textview.style.width = '450px';
-    document.form.textview.style.height = '150px';
-    document.form.textview.style.fontSize = '100px';
-    cal.style.maxWidth = '450px';
-    cal.style.marginTop = '5%';
-    cal.style.padding = '40px';
-    cal.style.gridGap = '15px';
-}
+// function big() {
+//     document.form.textview.style.width = '450px';
+//     document.form.textview.style.height = '150px';
+//     document.form.textview.style.fontSize = '100px';
+//     cal.style.maxWidth = '450px';
+//     cal.style.marginTop = '5%';
+//     cal.style.padding = '40px';
+//     cal.style.gridGap = '15px';
+// }

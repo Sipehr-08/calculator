@@ -11,11 +11,8 @@
 <body>
     <div class="section">
         <div class="header header-color">
-            <div class="mode mode-color" onclick="dark()">Тёмный</div>
-            <div class="mode mode-color" onclick="light()">Светлый</div>
-            <div class="mode mode-color" onclick="small()">Маленький</div>
-            <div class="mode mode-color" onclick="middle()">Средний</div>
-            <div class="mode mode-color" onclick="big()">Большой</div>
+            <img class="image-toggle" src="sun.svg" onclick="toggle()" width="70">
+                <p id="text-toggle" onclick="toggle()">Light</p>
         </div>
 
         <div id="calculator" class="calculator">
@@ -39,9 +36,9 @@
             <div class="but" onclick="insert('1')">1</div>
             <div class="but" onclick="insert('2')">2</div>
             <div class="but" onclick="insert('3')">3</div>
-            <div class="but el" onclick="insert('+')">+</div>
+            <div class="but el" onclick="insertSymbol('+')">+</div>
             <div class="but zero" onclick="insert('0')">0</div>
-            <div class="but" onclick="insertSymbol('.')">.</div>
+            <div class="but" onclick="dot()">.</div>
             <div class="but el" onclick="equal()">=</div>
         </div>
 
