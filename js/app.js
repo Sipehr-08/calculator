@@ -1,5 +1,7 @@
 let sel = 0;
-
+let status = 0;
+let state = true;
+let condition = 0;
 function toggle() {
     let imageToggle = document.getElementsByClassName('image-toggle')[0];
     let textToggle = document.getElementById('text-toggle');
@@ -25,17 +27,31 @@ function insert(num) {
     var cal = document.form.textview.value;
     if (cal.length <= 1 ) {
         document.form.textview.value = (document.form.textview.value.replace(/0/,'') + num);
+        status = 1;
       } else if(cal.length > 1 && cal.length <12) {
         document.form.textview.value = document.form.textview.value + num;
+        status = 1;
       }
 }
+
 
 function dot() {
     var cal = document.form.textview.value;
 
-    if(!cal.includes('.') || num !== '.') {
-        document.form.textview.value = document.form.textview.value + '.';
+    if(cal.length <= 1 && status === 0) {
+        cal = '0.';
+        status = 0;
+        state = false;
+        console.log(1);
+    } else if(state && status === 1){
+        cal += '.';
+        console.log(2);
+        state = false;
+        status = 0;
+    } else {
+        cal += '';
     }
+    document.form.textview.value = cal;
 }
 
 function plusMinus() {
@@ -49,16 +65,19 @@ if(cal.substr(0,1) !== '-') {
 
 function insertSymbol(symbol) {
     var cal = document.form.textview.value;
-    if(cal.slice(-1) === '+' || cal.slice(-1) === '-' || cal.slice(-1) === '/' ||cal.slice(-1) === '*') {
+    if(cal.slice(-1) === '+' || cal.slice(-1) === '-' || cal.slice(-1) === '/' ||cal.slice(-1) === '*' ||cal.slice(-1) === '.') {
         document.form.textview.value = (document.form.textview.value + '');
-    }else{
+    }else if (status === 1 && state === false){
         document.form.textview.value = document.form.textview.value + symbol;
-    }  
+        state = true;
+    } 
     
 }
 function clean () {
     
     document.form.textview.value = "0";
+    status = 0;
+    state = true;
 }
 
 function back() {
@@ -84,7 +103,9 @@ function equal () {
 // функция для смены темы
 
 function light() {
-    $('.but').removeClass('but').addClass('btn');
+
+
+$('.but').removeClass('but').addClass('btn');
     $('.el').removeClass('el').addClass('el_1');
     $('.clean').removeClass('clean').addClass('clean_1');
     $('input').removeClass('inputType').addClass('inputType_1');
